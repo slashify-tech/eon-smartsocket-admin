@@ -1,0 +1,20 @@
+{
+    "common": {
+        "langToggle": "English"
+    },
+    "login": {
+        "title": "تسجيل الدخول إلى حسابك",
+        "subtitle": "أدخل بريدك الإلكتروني أدناه لتسجيل الدخول إلى حسابك",
+        "emailLabel": "بريد إلكتروني",
+        "emailPlaceholder": "m@example.com",
+        "passwordLabel": "كلمة المرور",
+        "submit": "تسجيل الدخول",
+        "submitting": "تسجيل الدخول...",
+        "errors": {
+            "invalidEmail": "عنوان البريد الإلكتروني غير صالح",
+            "emailRequired": "البريد الإلكتروني مطلوب",
+            "passwordMin": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+            "passwordRequired": "كلمة المرور مطلوبة"
+        }
+    }
+}
