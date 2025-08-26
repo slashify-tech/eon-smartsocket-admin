@@ -64,53 +64,53 @@ export function AppSidebar({
       avatar: "/avatars/shadcn.jpg",
     },
 
-    navMain: [
-      {
-        title: "Dashboard",
-        url: `/${lang}`,
-        icon: IconHome,
-      },
-      {
-        title: "Sockets",
-        url: "#",
-        icon: IconPlug,
-      },
-      {
-        title: "Admins",
-        url: "#",
-        icon: IconBuildings,
-      },
-      {
-        title: "User Management",
-        url: "#",
-        icon: IconUsers,
-      },
-      {
-        title: "Session Management",
-        url: "#",
-        icon: IconClockPlay,
-      },
-      {
-        title: "Tickets Management",
-        url: "#",
-        icon: IconTicket,
-      },
-      {
-        title: "Tarrif Management",
-        url: "#",
-        icon: IconCoins,
-      },
-      {
-        title: "Announcement",
-        url: "#",
-        icon: IconSpeakerphone,
-      },
-      {
-        title: "Invoices",
-        url: "#",
-        icon: IconFileInvoice,
-      },
-    ],
+navMain: [
+  {
+    title: t('dashboard.Dashboard'),
+    url: `/${lang}`,
+    icon: IconHome,
+  },
+  {
+    title: t('dashboard.Sockets'),
+    url: "#",
+    icon: IconPlug,
+  },
+  {
+    title: t('dashboard.Admins'),
+    url: "#",
+    icon: IconBuildings,
+  },
+  {
+    title: t('dashboard.UserManagement'),
+    url: "#",
+    icon: IconUsers,
+  },
+  {
+    title: t('dashboard.SessionManagement'),
+    url: "#",
+    icon: IconClockPlay,
+  },
+  {
+    title: t('dashboard.TicketsManagement'),
+    url: "#",
+    icon: IconTicket,
+  },
+  {
+    title: t('dashboard.TarrifManagement'),
+    url: "#",
+    icon: IconCoins,
+  },
+  {
+    title: t('dashboard.Announcement'),
+    url: "#",
+    icon: IconSpeakerphone,
+  },
+  {
+    title: t('dashboard.Invoices'),
+    url: "#",
+    icon: IconFileInvoice,
+  },
+],
     // navClouds: [
     //   {
     //     title: "Capture",

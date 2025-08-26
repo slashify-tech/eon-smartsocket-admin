@@ -1,32 +1,35 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
-
-const statsData = [
-  {
-    title: "Total Active Socket",
-    value: 128,
-    icon: "/images/icons/socket.svg",
-  },
-  {
-    title: "Total Users",
-    value: 115,
-    icon: "/images/icons/users.svg",
-  },
-  {
-    title: "Total Sessions Today",
-    value: "20/51",
-    icon: "/images/icons/session.svg",
-  },
-  {
-    title: "Total Revenue",
-    value: 7920,
-    icon: "/images/icons/revenue.svg",
-    isCurrency: true,
-  },
-];
+import { useTranslations } from "next-intl";
 
 const StatsCard = () => {
+  const t = useTranslations();
+
+  const statsData = [
+    {
+      title: t("homeDashboard.totalActiveSocket"),
+      value: 128,
+      icon: "/images/icons/socket.svg",
+    },
+    {
+      title: t("homeDashboard.totalUsers"),
+      value: 115,
+      icon: "/images/icons/users.svg",
+    },
+    {
+      title: t("homeDashboard.totalSessionsToday"),
+      value: "20/51",
+      icon: "/images/icons/session.svg",
+    },
+    {
+      title: t("homeDashboard.totalRevenue"),
+      value: 7920,
+      icon: "/images/icons/revenue.svg",
+      isCurrency: true,
+    },
+  ];
+
   return (
     <div className="grid grid-cols-1 gap-10 lg:grid-cols-4">
       {statsData.map((stat, index) => (
@@ -52,14 +55,16 @@ const StatsCard = () => {
               {stat.value ? (
                 stat.isCurrency ? (
                   <span className="flex items-center gap-1" dir="ltr">
-                    <img src="/images/icons/SAR.svg" alt="sar" />
+                    <img src="/images/icons/SAR.svg" alt={t("common.currency")} />
                     {stat.value}
                   </span>
                 ) : (
                   stat.value
                 )
               ) : (
-                <span className="text-gray-400 font-bold text-lg">No Results</span>
+                <span className="text-gray-400 font-bold text-lg">
+                  {t("common.noResults")}
+                </span>
               )}
             </p>
           </div>

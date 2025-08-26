@@ -1,20 +1,59 @@
 {
-    "common": {
-        "langToggle": "عربي"
-    },
-    "login": {
-        "title": "Login to your account",
-        "subtitle": "Enter your email below to login to your account",
-        "emailLabel": "Email",
-        "emailPlaceholder": "m@example.com",
-        "passwordLabel": "Password",
-        "submit": "Login",
-        "submitting": "Logging in...",
-        "errors": {
-            "invalidEmail": "Invalid email address",
-            "emailRequired": "Email is required",
-            "passwordMin": "Password must be at least 6 characters",
-            "passwordRequired": "Password is required"
-        }
+  "common": {
+    "langToggle": "عربي",
+    "noResults": "No Results",
+    "currency": "SAR",
+    "viewAllSockets": "View all sockets →",
+    "viewAll": "View all →"
+  },
+  "login": {
+    "title": "Login to your account",
+    "subtitle": "Enter your email below to login to your account",
+    "emailLabel": "Email",
+    "emailPlaceholder": "m@example.com",
+    "passwordLabel": "Password",
+    "submit": "Login",
+    "submitting": "Logging in...",
+    "errors": {
+      "invalidEmail": "Invalid email address",
+      "emailRequired": "Email is required",
+      "passwordMin": "Password must be at least 6 characters",
+      "passwordRequired": "Password is required"
     }
+  },
+  "homeDashboard": {
+    "totalActiveSocket": "Total Active Socket",
+    "totalUsers": "Total Users",
+    "totalSessionsToday": "Total Sessions Today",
+    "totalRevenue": "Total Revenue",
+    "usageOverTime": "Usage Over Time",
+    "monthlyRevenue": "Monthly Revenue",
+    "ticketsDistribution": "Tickets Distribution",
+    "usageByRegion": "Usage by Region",
+    "activeSocketPoles": "Active Socket Poles",
+    "recentAnnouncements": "Recent Announcements"
+  },
+  "tableHeaders": {
+    "id": "ID",
+    "location": "Location",
+    "status": "Status",
+    "sessionsToday": "Sessions Today"
+  },
+  "status": {
+    "online": "Online",
+    "insession": "In Session",
+    "maintenance": "Maintenance",
+    "offline": "Offline"
+  },
+  "dashboard": {
+    "Dashboard": "Dashboard",
+    "Sockets": "Sockets",
+    "Admins": "Admins",
+    "UserManagement": "User Management",
+    "SessionManagement": "Session Management",
+    "TicketsManagement": "Tickets Management",
+    "TarrifManagement": "Tarrif Management",
+    "Announcement": "Announcement",
+    "Invoices": "Invoices"
+  }
 }
