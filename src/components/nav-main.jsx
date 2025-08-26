@@ -18,8 +18,6 @@ export function NavMain({ items }) {
   const path = usePathname();
   const basePath = "/" + path.split("/")[1];
 
-  console.log('items', items);
-  console.log('basePath', basePath);
 
   return (
     <SidebarGroup>
@@ -47,7 +45,7 @@ export function NavMain({ items }) {
               <SidebarMenuButton
                 tooltip={item.title}
                 onClick={() => router.push(item.url)}
-                isActive={item.url == basePath}
+                isActive={item.url == path}
               >
                 {item.icon && <item.icon />}
                 <span>{item.title}</span>

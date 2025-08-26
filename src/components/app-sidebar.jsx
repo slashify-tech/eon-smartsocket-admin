@@ -82,7 +82,7 @@ navMain: [
   },
   {
     title: t('dashboard.UserManagement'),
-    url: "#",
+    url: `/${lang}/users`,
     icon: IconUsers,
   },
   {
