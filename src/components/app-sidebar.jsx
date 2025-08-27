@@ -77,7 +77,7 @@ navMain: [
   },
   {
     title: t('dashboard.Admins'),
-    url: "#",
+    url: `/${lang}/admins`,
     icon: IconBuildings,
   },
   {
@@ -87,12 +87,12 @@ navMain: [
   },
   {
     title: t('dashboard.SessionManagement'),
-    url: "#",
+    url: `/${lang}/sessions`,
     icon: IconClockPlay,
   },
   {
     title: t('dashboard.TicketsManagement'),
-    url: "#",
+    url: `/${lang}/tickets`,
     icon: IconTicket,
   },
   {

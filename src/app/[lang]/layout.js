@@ -20,7 +20,7 @@ export const metadata = {
 
 export default async function RootLayout({ children, params }) {
     const { lang } = await params;
-  const dir = lang === "ar" ? "rtl" : "ltr";
+    const dir = lang === "ar" ? "rtl" : "ltr";
     const messages = await getMessages();
 
 
