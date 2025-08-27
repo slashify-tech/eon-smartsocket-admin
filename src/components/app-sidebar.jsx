@@ -3,19 +3,13 @@
 import * as React from "react"
 import {
   IconBuildings,
-  IconChartBar,
   IconClockPlay,
   IconCoins,
-  IconDashboard,
   IconFileInvoice,
-  IconFolder,
   IconHelp,
   IconHome,
-  IconInnerShadowTop,
   IconLanguage,
-  IconListDetails,
   IconPlug,
-  IconSearch,
   IconSettings,
   IconSpeakerphone,
   IconTicket,
@@ -97,12 +91,12 @@ navMain: [
   },
   {
     title: t('dashboard.TarrifManagement'),
-    url: "#",
+    url: `/${lang}/tariffs`,
     icon: IconCoins,
   },
   {
     title: t('dashboard.Announcement'),
-    url: "#",
+    url: `/${lang}/announcements`,
     icon: IconSpeakerphone,
   },
   {

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Plus } from "lucide-react";
 import AdminCard from "./AdminCard";
 import AddEditModal from "./AddEditModal"; // ← import your modal
+import ConfirmDeleteModal from "./ConfirmDelete";
 
 const mockAdmins = [
   {
@@ -90,6 +91,9 @@ const Admins = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedAdmin, setSelectedAdmin] = useState(null);
 
+  const [confirmOpen, setConfirmOpen] = useState(false); // confirm delete modal
+  const [deleteId, setDeleteId] = useState(null);
+
   const filtered = useMemo(() => {
     if (!query.trim()) return admins;
     const q = query.toLowerCase();
@@ -114,8 +118,19 @@ const Admins = () => {
     setModalOpen(true);
   };
 
+  // const handleDelete = (id) => {
+  //   setAdmins((prev) => prev.filter((a) => a.id !== id));
+  // };
+
   const handleDelete = (id) => {
-    setAdmins((prev) => prev.filter((a) => a.id !== id));
+    setDeleteId(id);
+    setConfirmOpen(true);
+  };
+
+  const confirmDelete = () => {
+    setAdmins((prev) => prev.filter((a) => a.id !== deleteId));
+    setConfirmOpen(false);
+    setDeleteId(null);
   };
 
   const handleSubmit = (form) => {
@@ -219,6 +234,13 @@ const Admins = () => {
         onClose={() => setModalOpen(false)}
         onSubmit={handleSubmit}
         admin={selectedAdmin}
+      />
+
+      {/* ✅ Confirm Delete Modal */}
+      <ConfirmDeleteModal
+        confirmOpen={confirmOpen}
+        setConfirmOpen={setConfirmOpen}
+        confirmDelete={confirmDelete}
       />
     </div>
   );
