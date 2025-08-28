@@ -101,7 +101,7 @@ navMain: [
   },
   {
     title: t('dashboard.Invoices'),
-    url: "#",
+    url: `/${lang}/invoices`,
     icon: IconFileInvoice,
   },
 ],
