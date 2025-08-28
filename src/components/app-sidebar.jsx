@@ -66,7 +66,7 @@ navMain: [
   },
   {
     title: t('dashboard.Sockets'),
-    url: "#",
+    url: `/${lang}/sockets`,
     icon: IconPlug,
   },
   {
