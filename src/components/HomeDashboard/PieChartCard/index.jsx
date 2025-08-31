@@ -1,56 +1,68 @@
-"use client";
+"use client"
 
+import { Pie, PieChart } from "recharts"
 import {
-  PieChart,
-  Pie,
-  Cell,
-  Tooltip,
-  ResponsiveContainer,
-  Legend,
-} from "recharts";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import {
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+} from "@/components/ui/chart"
 
-const COLORS = ["#2563eb", "#16a34a", "#f59e0b", "#ef4444", "#8b5cf6"];
+const PieChartCard = ({ title, description, data }) => {
+  const hasData = data && data.length > 0
 
-const PieChartCard = ({ title, data }) => {
-  const hasData = data && data.length > 0;
+  const chartConfig = data.reduce((acc, item, index) => {
+    acc[item.name] = {
+      label: item.name,
+      color: `var(--chart-${(index % 5) + 1})`,
+    }
+    return acc
+  }, {})
+
+  const chartData = data.map((item, index) => ({
+    ...item,
+    fill: `var(--chart-${(index % 5) + 1})`,
+  }))
+
   return (
-    <Card className="rounded-2xl shadow-sm">
-      <CardHeader>
+    <Card className="flex flex-col rounded-2xl shadow-sm">
+      <CardHeader className="items-center pb-0">
         <CardTitle>{title}</CardTitle>
+        {description && <CardDescription>{description}</CardDescription>}
       </CardHeader>
-      <CardContent className="flex items-center justify-center h-[300px]">
+      <CardContent className="flex-1 flex items-center justify-center">
         {hasData ? (
-          <ResponsiveContainer width="100%" height={300}>
+          <ChartContainer
+            config={chartConfig}
+            className="mx-auto aspect-square max-h-[300px] w-full"
+          >
             <PieChart>
               <Pie
-                data={data}
+                data={chartData}
+                dataKey="value"
+                nameKey="name"
                 cx="50%"
                 cy="50%"
-                labelLine={false}
-                outerRadius={100}
-                dataKey="value"
-                label={({ name, percent }) =>
-                  `${name} ${(percent * 100).toFixed(0)}%`
-                }
-              >
-                {data.map((_, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
+                outerRadius="80%"
+              />
+              <ChartLegend
+                content={<ChartLegendContent nameKey="name" />}
+                className="-translate-y-2 flex-wrap gap-2 *:basis-1/4 *:justify-center"
+              />
             </PieChart>
-          </ResponsiveContainer>
+          </ChartContainer>
         ) : (
           <span className="text-gray-400 font-bold text-lg">No Results</span>
         )}
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
-export default PieChartCard;
+export default PieChartCard

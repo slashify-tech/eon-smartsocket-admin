@@ -4,7 +4,7 @@ import LineChartCard from "./LineChartGraph";
 import StatsCard from "./StatsCard";
 import PieChartCard from "./PieChartCard";
 import TicketsPieChart from "./TicketPieChart";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import ActivePolesCard from "./ActivePolesCard";
 import Announcement from "./Announcement";
 import { useTranslations } from "next-intl";

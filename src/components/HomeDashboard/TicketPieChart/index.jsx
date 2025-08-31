@@ -1,82 +1,169 @@
-"use client";
+"use client"
 
-import React, { useState } from "react";
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from "recharts";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import * as React from "react"
+import { Label, Pie, PieChart, Sector, Cell } from "recharts"
 
-const COLORS = ["#2563eb", "#16a34a", "#f59e0b", "#ef4444", "#8b5cf6"];
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartStyle,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
-const TicketsPieChart = ({ title, data }) => {
-  const [timeRange, setTimeRange] = useState("last_10_days");
-  const [region, setRegion] = useState("all");
+export const description = "Tickets distribution chart"
 
-  const hasData = data && data.length > 0;
+const chartConfig = {
+  open: { label: "Open", color: "#DDCE24" },
+  resolved: { label: "Resolved", color: "#256670" },
+  others: { label: "Others", color: "#256670" },
+}
+
+const TicketsPieChart = ({ title = "Tickets", data, description }) => {
+  const id = "tickets-pie"
+  const [timeRange, setTimeRange] = React.useState("last_10_days")
+  const [region, setRegion] = React.useState("all")
+  const [activeName, setActiveName] = React.useState(data[0]?.name ?? "")
+
+  const activeIndex = React.useMemo(
+    () => data.findIndex((item) => item.name === activeName),
+    [activeName, data]
+  )
+
+  const hasData = data && data.length > 0
+  const total = data.reduce((sum, item) => sum + item.value, 0)
 
   return (
-    <Card className="rounded-2xl shadow-sm">
-      {/* Header with dropdowns */}
-      <CardHeader className="flex flex-row justify-between items-center">
-        <CardTitle>{title}</CardTitle>
-        <div className="flex gap-2">
-          {/* Time Range Dropdown */}
-          <select
-            value={timeRange}
-            onChange={(e) => setTimeRange(e.target.value)}
-            className="border rounded-lg px-2 py-1 text-sm"
-          >
-            <option value="last_10_days">Last 10 Days</option>
-            <option value="last_week">Last Week</option>
-            <option value="last_month">Last Month</option>
-          </select>
+    <Card data-chart={id} className="flex flex-col">
+      <ChartStyle id={id} config={chartConfig} />
 
-          {/* Region Dropdown */}
-          <select
-            value={region}
-            onChange={(e) => setRegion(e.target.value)}
-            className="border rounded-lg px-2 py-1 text-sm"
-          >
-            <option value="all">All</option>
-            <option value="north">North</option>
-            <option value="south">South</option>
-            <option value="east">East</option>
-            <option value="west">West</option>
-          </select>
+      {/* Header */}
+      <CardHeader className="flex-row items-start space-y-0 pb-0">
+        <div className="grid gap-1">
+          <CardTitle>{title}</CardTitle>
+          {description && <CardDescription>{description}</CardDescription>}
+        </div>
+
+        {/* Filters */}
+        <div className="flex gap-2 ml-auto">
+          {/* Time Range */}
+          <Select value={timeRange} onValueChange={setTimeRange}>
+            <SelectTrigger className="h-7 w-[130px] rounded-lg pl-2.5">
+              <SelectValue placeholder="Select range" />
+            </SelectTrigger>
+            <SelectContent align="end" className="rounded-xl">
+              <SelectItem value="last_10_days">Last 10 Days</SelectItem>
+              <SelectItem value="last_week">Last Week</SelectItem>
+              <SelectItem value="last_month">Last Month</SelectItem>
+            </SelectContent>
+          </Select>
+
+          {/* Region */}
+          <Select value={region} onValueChange={setRegion}>
+            <SelectTrigger className="h-7 w-[130px] rounded-lg pl-2.5">
+              <SelectValue placeholder="Select region" />
+            </SelectTrigger>
+            <SelectContent align="end" className="rounded-xl">
+              <SelectItem value="all">All</SelectItem>
+              <SelectItem value="north">North</SelectItem>
+              <SelectItem value="south">South</SelectItem>
+              <SelectItem value="east">East</SelectItem>
+              <SelectItem value="west">West</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </CardHeader>
 
-      {/* Chart or No Results */}
-      <CardContent className="flex items-center justify-center h-[300px]">
+      {/* Chart */}
+      <CardContent className="flex flex-1 justify-center pb-0">
         {hasData ? (
-          <ResponsiveContainer width="100%" height="100%">
+          <ChartContainer
+            id={id}
+            config={chartConfig}
+            className="mx-auto aspect-square w-full max-w-[300px]"
+          >
             <PieChart>
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent hideLabel />}
+              />
               <Pie
                 data={data}
-                cx="50%"
-                cy="50%"
-                labelLine={false}
-                outerRadius={100}
                 dataKey="value"
-                label={({ name, percent }) =>
-                  `${name} ${(percent * 100).toFixed(0)}%`
-                }
+                nameKey="name"
+                innerRadius={60}
+                strokeWidth={5}
+                activeIndex={activeIndex}
+                activeShape={({ outerRadius = 0, ...props }) => (
+                  <g>
+                    <Sector {...props} outerRadius={outerRadius + 10} />
+                    <Sector
+                      {...props}
+                      outerRadius={outerRadius + 25}
+                      innerRadius={outerRadius + 12}
+                    />
+                  </g>
+                )}
               >
-                {data.map((_, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
+                {data.map((entry, index) => {
+    const key = entry.name.toLowerCase() // e.g. "open" or "resolved"
+    const color = chartConfig[key]?.color || "#ccc" // fallback grey
+    return <Cell key={`cell-${index}`} fill={color} />
+  })}
+                <Label
+                  content={({ viewBox }) => {
+                    if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                      return (
+                        <text
+                          x={viewBox.cx}
+                          y={viewBox.cy}
+                          textAnchor="middle"
+                          dominantBaseline="middle"
+                        >
+                          <tspan
+                            x={viewBox.cx}
+                            y={viewBox.cy}
+                            className="fill-foreground text-3xl font-bold"
+                          >
+                            {total}
+                          </tspan>
+                          <tspan
+                            x={viewBox.cx}
+                            y={(viewBox.cy || 0) + 24}
+                            className="fill-muted-foreground"
+                          >
+                            Tickets
+                          </tspan>
+                        </text>
+                      )
+                    }
+                  }}
+                />
               </Pie>
-              <Tooltip />
-              <Legend />
             </PieChart>
-          </ResponsiveContainer>
+          </ChartContainer>
         ) : (
-          <span className="text-gray-400 font-bold text-lg">No Results</span>
+          <div className="flex items-center justify-center h-[250px] text-gray-400 font-bold text-lg">
+            No Results
+          </div>
         )}
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
-export default TicketsPieChart;
+export default TicketsPieChart
