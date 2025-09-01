@@ -14,14 +14,6 @@ export function middleware(request) {
   const pathname = request.nextUrl.pathname;
   const isLoginPath = pathname.includes('/login');
 
-  // Redirect to /[locale]/login if not authenticated
-  // if (!authToken && !isLoginPath) {
-  //   const locale = routing.locales.find((loc) => pathname.startsWith(`/${loc}`)) || routing.defaultLocale;
-  //   const loginUrl = new URL(`/${locale}/login`, request.url);
-  //   return NextResponse.redirect(loginUrl);
-  // }
-
-  // Run the locale middleware if authenticated or on login page
   return intlMiddleware(request);
 }
 

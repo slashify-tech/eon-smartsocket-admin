@@ -1,0 +1,59 @@
+{
+  "common": {
+    "langToggle": "English",
+    "noResults": "لا توجد نتائج",
+    "currency": "SAR",
+    "viewAllSockets": "عرض جميع المقابس →",
+    "viewAll": "عرض الكل →"
+  },
+  "login": {
+    "title": "تسجيل الدخول إلى حسابك",
+    "subtitle": "أدخل بريدك الإلكتروني أدناه لتسجيل الدخول إلى حسابك",
+    "emailLabel": "بريد إلكتروني",
+    "emailPlaceholder": "m@example.com",
+    "passwordLabel": "كلمة المرور",
+    "submit": "تسجيل الدخول",
+    "submitting": "تسجيل الدخول...",
+    "errors": {
+      "invalidEmail": "عنوان البريد الإلكتروني غير صالح",
+      "emailRequired": "البريد الإلكتروني مطلوب",
+      "passwordMin": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+      "passwordRequired": "كلمة المرور مطلوبة"
+    }
+  },
+  "homeDashboard": {
+    "totalActiveSocket": "إجمالي المقبس النشط",
+    "totalUsers": "إجمالي المستخدمين",
+    "totalSessionsToday": "إجمالي الجلسات اليوم",
+    "totalRevenue": "إجمالي الإيرادات",
+    "usageOverTime": "الاستخدام مع مرور الوقت",
+    "monthlyRevenue": "الإيرادات الشهرية",
+    "ticketsDistribution": "توزيع التذاكر",
+    "usageByRegion": "الاستخدام حسب المنطقة",
+    "activeSocketPoles": "أعمدة المقبس النشطة",
+    "recentAnnouncements": "الإعلانات الأخيرة"
+  },
+  "tableHeaders": {
+    "id": "ID",
+    "location": "موقع",
+    "status": "حالة",
+    "sessionsToday": "جلسات اليوم"
+  },
+  "status": {
+    "online": "متصل",
+    "insession": "في الجلسة",
+    "maintenance": "صيانة",
+    "offline": "غير متصل"
+  },
+  "dashboard": {
+    "Dashboard": "لوحة التحكم",
+    "Sockets": "المقابس",
+    "Admins": "المشرفون",
+    "UserManagement": "إدارة المستخدمين",
+    "SessionManagement": "إدارة الجلسات",
+    "TicketsManagement": "إدارة التذاكر",
+    "TarrifManagement": "إدارة التعرفة",
+    "Announcement": "الإعلانات",
+    "Invoices": "الفواتير"
+  }
+}
