@@ -97,7 +97,6 @@ const HomeDashboard = () => {
         <Card className="rounded-2xl shadow-sm h-[400px] flex items-center justify-center text-gray-400">
           Map View (Integration Placeholder)
         </Card>
-
         {/* Active Sockets Table */}
         <ActivePolesCard socketPoles={socketPoles} />
       </div>

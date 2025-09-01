@@ -196,14 +196,23 @@ navMain: [
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:!p-1.5">
-              <a href="/">
-                {/* <IconInnerShadowTop className="!size-5" /> */}
-                {/* <span className=""> */}
-                  <figure>
-                    {/* <img src="/images/logo.svg"/> */}
-                  </figure>
-                {/* </span> */}
+            <SidebarMenuButton
+              asChild
+              className="data-[slot=sidebar-menu-button]:!p-4 !h-auto"
+            >
+              <a href="/" className="flex flex-col items-center">
+                <figure className="h-32 w-32 rounded-lg shadow-sm flex items-center justify-center">
+                  <img
+                    src="/images/logo.svg"
+                    alt="Raam 4 Wheelers Logo"
+                    className="w-full h-full object-contain"
+                  />
+                </figure>
+                <div className="text-center">
+                  <span className="text-lg font-semibold block">
+                    Energy On
+                  </span>
+                </div>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>

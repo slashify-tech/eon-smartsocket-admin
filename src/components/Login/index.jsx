@@ -55,6 +55,20 @@ const Login = ({ className, ...props }) => {
       <Card>
         <CardHeader>
           {/* Title + Language Switcher */}
+          <div className="flex flex-col items-center space-y-4 mb-4">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 rounded-lg shadow-sm flex items-center justify-center">
+                  <img 
+                    src="/images/logo.svg" 
+                    alt="Raam 4 Wheelers Logo" 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <h1 className="text-2xl font-bold text-primary">Energy On</h1>
+                </div>
+              </div>
+            </div>
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold">{t("login.title")}</h2>
             <Button
