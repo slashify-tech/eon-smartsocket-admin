@@ -1,23 +1,28 @@
-"use client"
+"use client";
 
 import { IconCirclePlusFilled, IconMail } from "@tabler/icons-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import { usePathname, useRouter } from "next/navigation";
 
-export function NavMain({
-  items
-}) {
+export function NavMain({ items }) {
+
+  const router = useRouter();
+  const path = usePathname();
+  const basePath = "/" + path.split("/")[1];
+
+
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
-        <SidebarMenu>
+        {/* <SidebarMenu>
           <SidebarMenuItem className="flex items-center gap-2">
             <SidebarMenuButton
               tooltip="Quick Create"
@@ -33,11 +38,15 @@ export function NavMain({
               <span className="sr-only">Inbox</span>
             </Button>
           </SidebarMenuItem>
-        </SidebarMenu>
+        </SidebarMenu> */}
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title}>
+              <SidebarMenuButton
+                tooltip={item.title}
+                onClick={() => router.push(item.url)}
+                isActive={item.url == path}
+              >
                 {item.icon && <item.icon />}
                 <span>{item.title}</span>
               </SidebarMenuButton>
